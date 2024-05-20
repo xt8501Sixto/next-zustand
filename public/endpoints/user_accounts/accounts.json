@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "username": "xt8480@rimac.com.pe",
+    "role": "federado",
+    "password": "123456",
+    "token": "1545431555"
+  },
+  {
+    "id": 2,
+    "username": "juanm.hidalgo@softtek.com",
+    "role": "no-federado",
+    "password": "123456",
+    "token": "548845666"
+  }
+]

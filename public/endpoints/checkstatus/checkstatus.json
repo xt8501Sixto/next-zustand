@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "username": "xt8480@rimac.com.pe",
+        "password": "123456",
+        "isActive": true,
+        "roles": ["federado"],
+        "token": "ABC123456878787"
+      },
+      {
+        "id": 2,
+        "username": "juanm.hidalgo@softtek.com",
+        "password": "123456",
+        "isActive": true,
+        "roles": ["no-federado"],
+        "token": "ABC789101154545"
+      }
+]
