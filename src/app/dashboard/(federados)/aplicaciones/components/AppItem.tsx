@@ -7,6 +7,7 @@ export const AppItem = ({ applications }: { applications: DataDasboard }) => {
   const { editApp, deleteApp } = useAppStore();
   const [isEditing, setIsEditing] = useState(false);
   const [editValues, setEditValues] = useState({ ...applications });
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const handleEditChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -16,9 +17,27 @@ export const AppItem = ({ applications }: { applications: DataDasboard }) => {
     });
   };
 
+  const validateInputs = () => {
+    let tempErrors: { [key: string]: string } = {};
+    if (!editValues.nombre) {
+      tempErrors.nombre = "El nombre no puede estar vacío";
+    }
+    if (!editValues.key) {
+      tempErrors.key = "La clave no puede estar vacía";
+    }
+    if (!editValues.user_activos) {
+      tempErrors.user_activos =
+        "El número de usuarios activos no puede estar vacío";
+    }
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
   const handleEditSubmit = () => {
-    editApp(applications.id as number, editValues);
-    setIsEditing(false);
+    if (validateInputs()) {
+      editApp(applications.id as number, editValues);
+      setIsEditing(false);
+    }
   };
 
   const handleDelete = () => {
@@ -28,26 +47,38 @@ export const AppItem = ({ applications }: { applications: DataDasboard }) => {
     <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
       <td className="px-6 py-4">
         {isEditing ? (
-          <input
-            type="text"
-            name="nombre"
-            value={editValues.nombre}
-            onChange={handleEditChange}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+          <>
+            <input
+              type="text"
+              name="nombre"
+              value={editValues.nombre}
+              onChange={handleEditChange}
+              className={`border ${
+                errors.nombre ? "border-red-500" : "border-gray-300"
+              } rounded px-2 py-1`}
+            />
+            {errors.nombre && (
+              <p className="text-red-500 text-sm">{errors.nombre}</p>
+            )}
+          </>
         ) : (
           applications.nombre
         )}
       </td>
       <td className="px-6 py-4">
         {isEditing ? (
-          <input
-            type="text"
-            name="key"
-            value={editValues.key}
-            onChange={handleEditChange}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+          <>
+            <input
+              type="text"
+              name="key"
+              value={editValues.key}
+              onChange={handleEditChange}
+              className={`border ${
+                errors.key ? "border-red-500" : "border-gray-300"
+              } rounded px-2 py-1`}
+            />
+            {errors.key && <p className="text-red-500 text-sm">{errors.key}</p>}
+          </>
         ) : (
           applications.key
         )}
@@ -66,13 +97,20 @@ export const AppItem = ({ applications }: { applications: DataDasboard }) => {
       </td>
       <td className="px-6 py-4">
         {isEditing ? (
-          <input
-            type="text"
-            name="user_activos"
-            value={editValues.user_activos}
-            onChange={handleEditChange}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+          <>
+            <input
+              type="text"
+              name="user_activos"
+              value={editValues.user_activos}
+              onChange={handleEditChange}
+              className={`border ${
+                errors.user_activos ? "border-red-500" : "border-gray-300"
+              } rounded px-2 py-1`}
+            />
+            {errors.user_activos && (
+              <p className="text-red-500 text-sm">{errors.user_activos}</p>
+            )}
+          </>
         ) : (
           applications.user_activos
         )}
