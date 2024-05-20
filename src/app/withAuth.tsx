@@ -3,7 +3,7 @@ import { useAuthStore } from './stores';
 import { useRouter } from 'next/navigation';
 
 const withAuth = (WrappedComponent: React.ComponentType<any>) => {
-  return (props: React.PropsWithChildren<any>) => {
+  const WithAuthComponent = (props: React.PropsWithChildren<any>) => {
     const user = useAuthStore((state) => state.user);
     const router = useRouter();
     const [isHydrated, setIsHydrated] = useState(false);
@@ -43,6 +43,14 @@ const withAuth = (WrappedComponent: React.ComponentType<any>) => {
 
     return <WrappedComponent {...props} />;
   };
+
+  WithAuthComponent.displayName = `withAuth(${getDisplayName(WrappedComponent)})`;
+
+  return WithAuthComponent;
+};
+
+const getDisplayName = (WrappedComponent: React.ComponentType<any>) => {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 };
 
 export default withAuth;

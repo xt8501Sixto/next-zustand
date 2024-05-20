@@ -1,7 +1,7 @@
 import type { AuthStatus, User } from "@/app/interfaces";
 import { AuthService } from "@/services/auth.service";
 import { StateCreator, create } from "zustand";
-import { createJSONStorage, devtools, persist } from "zustand/middleware";
+import { devtools, persist } from "zustand/middleware";
 
 export interface AuthState {
   status: AuthStatus;
@@ -36,7 +36,6 @@ export const useAuthStore = create<AuthState>()(
   devtools(
     persist(storeAuth, {
       name: "auth-storage",
-      storage: createJSONStorage(() => localStorage),
     })
   )
 );

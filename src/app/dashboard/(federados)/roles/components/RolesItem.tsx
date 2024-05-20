@@ -8,7 +8,7 @@ export const RolesItem = ({ roles }: { roles: DataDasboard }) => {
       <td className="px-6 py-4">{roles.nombre}</td>
       <td className="px-6 py-4">{roles.codigo}</td>
       <td className="px-6 py-4">{roles.descripcion}</td>
-      <td className="px-6 py-4">{roles.permisos}</td>
+      <td className="px-6 py-4"><Link className="font-medium text-blue-600 dark:text-blue-500 hover:underline" href={'./roles/asociar'}>{roles.permisos}</Link></td>
       <td className="px-6 py-4">
         {" "}
         <input
