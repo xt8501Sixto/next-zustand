@@ -4,6 +4,7 @@ import {
   devtools,
   persist,
 } from "zustand/middleware";
+import { firebaseStorage } from "../storages/firebase-storage";
 
 interface AppState {
   applications: FormValues[];
@@ -30,6 +31,6 @@ const storeApp: StateCreator<AppState> = (set) => ({
 
 export const useAppStore = create<AppState>()(
   devtools(
-    persist(storeApp, { name: "app-storage" })
+    persist(storeApp, { name: "app-storage", storage: firebaseStorage })
   )
 );
