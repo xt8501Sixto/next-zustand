@@ -10,7 +10,7 @@ export const UsersAdd: React.FC<AppUserProps> = ({ onNewUsers }) => {
   const [error, setError] = useState("");
   const { mostrarComponente, setMostrarComponente } = ShowHideAdd();
 
-  const { formValues, setFormValues, onInputChange, isFormValid } = useForm({
+  const { formValues, setFormValues, onInputChange, isFormValid, onResetForm } = useForm({
     nombre: "",
     documento: "",
     usuario: "",
@@ -41,14 +41,20 @@ export const UsersAdd: React.FC<AppUserProps> = ({ onNewUsers }) => {
     }
   };
 
+  const onReset = () => {
+    setMostrarComponente(!mostrarComponente)
+    onResetForm();
+    setError("");
+  };
+
   return (
     <>
       <button
-        onClick={() => setMostrarComponente(!mostrarComponente)}
+        onClick={onReset}
         type="button"
         className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 sm:w-auto md:w-44"
       >
-        Agregar Usuarios
+        {mostrarComponente ? 'Ocultar Usuarios' : 'Agregar Usuarios' }
       </button>
       <div className={mostrarComponente ? "show-element" : "hide-element"}>
         <form onSubmit={onFormSubmit}>
