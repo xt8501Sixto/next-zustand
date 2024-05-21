@@ -130,7 +130,7 @@ export const RolesItem = ({ roles }: { roles: DataDasboard }) => {
             )}
           </>
         ) : (
-          <Link href="./roles/asociar/" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{roles.permisos}</Link>
+          <Link href="./roles/asociar" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{roles.permisos}</Link>
         )}
       </td>
       <td className="px-6 py-4">
