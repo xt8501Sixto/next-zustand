@@ -17,10 +17,15 @@ export const useForm = (initialFormValue: FormValues) => {
     return Object.values(formValues).every((value) => value.trim().length > 0);
   };
 
+  const onResetForm = () => {
+    setFormValues( initialFormValue );
+}
+
   return {
     formValues,
     setFormValues,
     onInputChange,
     isFormValid,
+    onResetForm
   };
 };

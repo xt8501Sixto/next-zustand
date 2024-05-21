@@ -4,7 +4,6 @@ import {
   devtools,
   persist,
 } from "zustand/middleware";
-import { customSessionStorage } from "../storages/session-storage";
 
 interface AppState {
   applications: FormValues[];
@@ -31,6 +30,6 @@ const storeApp: StateCreator<AppState> = (set) => ({
 
 export const useAppStore = create<AppState>()(
   devtools(
-    persist(storeApp, { name: "app-storage", storage: customSessionStorage })
+    persist(storeApp, { name: "app-storage" })
   )
 );

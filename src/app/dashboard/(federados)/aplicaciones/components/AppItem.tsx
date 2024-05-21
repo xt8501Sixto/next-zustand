@@ -17,6 +17,14 @@ export const AppItem = ({ applications }: { applications: DataDasboard }) => {
     });
   };
 
+  const handleCheckboxChange = () => {
+    const newEstado = editValues.estado === "A" ? "I" : "A";
+    setEditValues({
+      ...editValues,
+      estado: newEstado,
+    });
+  };
+
   const validateInputs = () => {
     let tempErrors: { [key: string]: string } = {};
     if (!editValues.nombre) {
@@ -43,6 +51,7 @@ export const AppItem = ({ applications }: { applications: DataDasboard }) => {
   const handleDelete = () => {
     deleteApp(applications.id as number);
   };
+
   return (
     <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
       <td className="px-6 py-4">
@@ -86,13 +95,9 @@ export const AppItem = ({ applications }: { applications: DataDasboard }) => {
       <td className="px-6 py-4">
         <input
           type="checkbox"
-          checked={applications.estado === "A"}
-          onChange={() =>
-            editApp(applications.id as number, {
-              ...applications,
-              estado: applications.estado === "A" ? "I" : "A",
-            })
-          }
+          checked={editValues.estado === "A"}
+          onChange={handleCheckboxChange}
+          disabled={!isEditing}
         />
       </td>
       <td className="px-6 py-4">
@@ -115,31 +120,33 @@ export const AppItem = ({ applications }: { applications: DataDasboard }) => {
           applications.user_activos
         )}
       </td>
-      <td className="px-6 py-4">
-        {isEditing ? (
+      <td className="px-6 py-4 flex justify-start">
+        <div className="flex">
+          {isEditing ? (
+            <button
+              onClick={handleEditSubmit}
+              className="font-medium text-green-600 dark:text-green-500 hover:underline"
+            >
+              Guardar
+            </button>
+          ) : (
+            <Link
+              href="#"
+              onClick={() => setIsEditing(true)}
+              className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            >
+              Editar
+            </Link>
+          )}
+        </div>
+        <div className="flex px-2">
           <button
-            onClick={handleEditSubmit}
-            className="font-medium text-green-600 dark:text-green-500 hover:underline"
+            onClick={handleDelete}
+            className="font-medium text-red-600 dark:text-red-500 hover:underline"
           >
-            Guardar
+            Eliminar
           </button>
-        ) : (
-          <Link
-            href="#"
-            onClick={() => setIsEditing(true)}
-            className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-          >
-            Editar
-          </Link>
-        )}
-      </td>
-      <td className="px-6 py-4">
-        <button
-          onClick={handleDelete}
-          className="font-medium text-red-600 dark:text-red-500 hover:underline"
-        >
-          Eliminar
-        </button>
+        </div>
       </td>
     </tr>
   );

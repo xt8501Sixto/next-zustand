@@ -1,5 +1,4 @@
 "use client";
-import { useEffect } from "react";
 import { NavBar } from "@/components/NavBar";
 import { RolesList } from "./components/RolesList";
 import { RolesAdd } from "./components/RolesAdd";

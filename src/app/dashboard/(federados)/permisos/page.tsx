@@ -7,7 +7,7 @@ import { usePermisoStore } from "@/app/stores";
 import withAuth from "@/app/withAuth";
 
 const PermissionsPage = () => {
-  const permiso = usePermisoStore((state) => state.permiso);
+  const permisos = usePermisoStore((state) => state.permisos);
   const { addPermiso } = usePermisoStore();
 
   const handleNewPermiso = (permiso: FormValues) => {
@@ -28,7 +28,7 @@ const PermissionsPage = () => {
                 <p>Módulo de Permisos</p>
               </div>
               <div className="flex flex-col text-sm font-medium text-gray-400 justify-center my-5">
-                <PermisoList permiso={permiso} />
+                <PermisoList permiso={permisos} />
               </div>
               <div className="flex flex-col text-sm font-medium text-gray-400 justify-center my-5">
                 <PermisoAdd onNewPermiso={handleNewPermiso} />
