@@ -1,0 +1,52 @@
+@font-face {
+    font-family: "BR Sonoma";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/BRSonoma-Regular.ttf") format("truetype"),
+      url("../fonts/BRSonoma-Regular.otf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "BR Sonoma";
+    font-style: italic;
+    font-weight: normal;
+    src: url("../fonts/BRSonoma-RegularItalic.ttf") format("truetype"),
+      url("../fonts/BRSonoma-RegularItalic.otf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "BR Sonoma";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/BRSonoma-SemiBold.ttf") format("truetype"),
+      url("../fonts/BRSonoma-SemiBold.otf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "BR Sonoma";
+    font-style: italic;
+    font-weight: 400;
+    src: url("../fonts/BRSonoma-SemiBoldItalic.ttf") format("truetype"),
+      url("../fonts/BRSonoma-SemiBoldItalic.otf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "BR Sonoma";
+    font-style: normal;
+    font-weight: bold;
+    src: url("../fonts/BRSonoma-Bold.ttf") format("truetype"),
+      url("../fonts/BRSonoma-Bold.otf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "BR Sonoma";
+    font-style: italic;
+    font-weight: bold;
+    src: url("../fonts/BRSonoma-BoldItalic.ttf") format("truetype"),
+      url("../fonts/BRSonoma-BoldItalic.otf") format("opentype");
+  }
+  
+  body {
+    font-family: "BR Sonoma", sans-serif;
+  }
+  

@@ -1,5 +1,9 @@
 import type { Config } from "tailwindcss";
 
+import plugin from "tailwindcss/plugin";
+import RideTokens from "@rimac-seguros/ride-system-tokens/dist/tailwind/v3/index";
+import RideCompositeTokens from "@rimac-seguros/ride-system-tokens/dist/tailwind/v3/utilities";
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,8 +17,13 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      ...RideTokens,
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addUtilities }) => {
+      addUtilities(RideCompositeTokens);
+    }),
+  ],
 };
 export default config;

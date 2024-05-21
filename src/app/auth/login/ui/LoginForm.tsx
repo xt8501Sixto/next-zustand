@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/app/stores";
+import { RideButton, RideTextField, RidePasswordField, RideLink, RideCheckbox } from "@rimac-seguros/ride-system-components";
 
 const initialFormState = {
   username: "",
@@ -17,7 +18,7 @@ export const LoginForm = () => {
   const login = useAuthStore((state) => state.login);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+    // e.preventDefault();
     setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -46,52 +47,44 @@ export const LoginForm = () => {
 
   return (
     <>
-      <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+      <form className="mt-8 space-y-6" onSubmit={handleSubmit} autoComplete="off">
         <input type="hidden" name="remember" value="true" />
-        <div className="relative">
-          <input
-            className="w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-            type="text"
-            name="username"
-            value={formState.username}
-            onChange={onChange}
-            placeholder="Correo electrónico"
-            autoComplete="off"
-          />
-        </div>
 
-        <div className="mt-8 content-center">
-          <input
-            className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-            type="password"
-            name="password"
-            value={formState.password}
-            onChange={onChange}
-            placeholder="Contraseña"
-            autoComplete="off"
-          />
-        </div>
+        <RideTextField
+          onChange={onChange}
+          value={formState.username}
+          name="username"
+          label="Correo electrónico"
+          required 
+        />
+
+        <RidePasswordField
+          onChange={onChange}
+          value={formState.password}
+          onGlyphClick={(ev) => { ev.preventDefault() }}
+          label="Contraseña"
+          name="password"
+          required
+          type="password" 
+        />
+
         <div className="flex items-center justify-between">
-          <div className="text-sm">
-            <a
-              href="#"
-              className="font-medium text-indigo-500 hover:text-indigo-500"
-            >
-              ¿Olvidaste tu contraseña?
-            </a>
-          </div>
+          <RideCheckbox size="small" disabled>Recuerdame </RideCheckbox>
+
+          <RideLink href="/auth/recovery" text="¿Olvidaste tu contraseña?" />
         </div>
 
         <div>
-          <button
+          <RideButton
+            loading={loading}
             type="submit"
-            className="bg-blue-500 text-white font-bold py-2 px-4 rounded w-full"
-            disabled={
-              formState.username === "" || formState.password === "" || loading
-            }
+            className="w-full"
+            text="Ingresar"
+            size="large"
           >
             {loading ? "Espere..." : "Ingresar"}
-          </button>
+          </RideButton>
+
           {error && (
             <div className="p-3 font-medium text-red-500 text-center">
               {error}
