@@ -1,11 +1,10 @@
 import { LoginImage } from "./components/LoginImage";
 
-export default async function LoginLayout({
-  children,
-}: {
+type LoginLayoutProps = {
   children: React.ReactNode;
-}) {
+};
 
+export default async function LoginLayout({ children }: LoginLayoutProps) {
   return (
     <div className="card w-full h-screen p-0">
       <div className="card-body w-full h-screen p-0">
