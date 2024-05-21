@@ -18,7 +18,7 @@ export const LoginForm = () => {
   const login = useAuthStore((state) => state.login);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // e.preventDefault();
+    e.preventDefault();
     setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -65,7 +65,7 @@ export const LoginForm = () => {
           label="Contraseña"
           name="password"
           required
-          type="password" 
+          type="password"
         />
 
         <div className="flex items-center justify-between">
