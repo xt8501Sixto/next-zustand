@@ -1,0 +1,14 @@
+.tree-spacingLeft {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.tree-spacingBottom {
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.tree {
+    color: rgb(17 24 39);
+    font-weight: 350;
+}

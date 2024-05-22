@@ -6,7 +6,7 @@ const firebaseApi: StateStorage = {
     getItem: async function (name: string): Promise<string | null> {
       try {
         const data = await fetch(`${firebaseUrl}/${name}.json`).then((res) => res.json());
-        console.log(data);
+  
         return JSON.stringify(data);
       } catch (error) {
           throw error
@@ -17,8 +17,7 @@ const firebaseApi: StateStorage = {
         method: 'PUT',
         body: value
       }).then((res) => res.json());
-      console.log(data);
-      return
+      return data
       
     },
     removeItem: function (name: string): void | Promise<void> {

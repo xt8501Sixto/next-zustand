@@ -27,7 +27,6 @@ const storeAuth: StateCreator<AuthState> = (set) => ({
     }
   },
   logout: () => {
-    localStorage.clear();
     set({ status: "unauthorized", user: undefined });
   },
 });

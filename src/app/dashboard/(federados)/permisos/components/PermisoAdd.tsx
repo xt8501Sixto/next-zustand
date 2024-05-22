@@ -2,6 +2,7 @@ import { ShowHideAdd } from "@/app/dashboard/hooks/ShowHideAdd";
 import { useForm } from "@/app/dashboard/hooks/useForm";
 import { FormValues } from "@/app/dashboard/interfaces/formValue.interface";
 import { useState } from "react";
+import TreeView from "./TreeView";
 
 type PermisoAddProps = {
   onNewPermiso: (perm: FormValues) => void;
@@ -95,6 +96,9 @@ export const PermisoAdd: React.FC<PermisoAddProps> = ({ onNewPermiso }) => {
                 <option value={"I"}>Inactivo</option>
               </select>
             </div>
+          </div>
+          <div className="tree flex justify-start text-left w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5">
+          <TreeView />
           </div>
           <button
             type="submit"
