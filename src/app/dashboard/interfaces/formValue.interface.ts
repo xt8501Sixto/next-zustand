@@ -10,5 +10,13 @@ export interface FormValues {
     usuario?: string;
     roles?: string;
     tipo?: string;
+    amplify?:string;
+    mfa?: string;
+    recaptcha?: string;
+    reintentos?: string;
+    caducidad?: string;
+    logitudMaxima?: string;
+    cambio?: string;
+    creacion?: string;
     estado?: string;
   };

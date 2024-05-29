@@ -15,6 +15,14 @@ export const AppAdd: React.FC<AppAddProps> = ({ onNewApp }) => {
     nombre: "",
     key: "",
     user_activos: "",
+    amplify: "",
+    mfa: "",
+    recaptcha: "",
+    reintentos: "",
+    caducidad: "",
+    logitudMaxima: "",
+    cambio: "",
+    creacion: "",
     estado: "",
   });
 
@@ -55,7 +63,7 @@ export const AppAdd: React.FC<AppAddProps> = ({ onNewApp }) => {
       </button>
       <div className={mostrarComponente ? "show-element" : "hide-element"}>
         <form onSubmit={onFormSubmit}>
-          <div className="grid gap-6 mb-6 md:grid-cols-2">
+            <div className="grid gap-6 mb-6 md:grid-cols-2">
             <div>
               <input
                 type="text"
@@ -87,6 +95,33 @@ export const AppAdd: React.FC<AppAddProps> = ({ onNewApp }) => {
               />
             </div>
             <div>
+                <input
+                  type="text"
+                  placeholder="Amplify"
+                  name="amplify"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  value={formValues.amplify}
+                  />
+            </div>
+            <div>
+              <label>MFA</label>
+              <input
+                type="checkbox"
+                placeholder="MFA"
+                name="mfa"
+                value={formValues.mfa}
+                />
+            </div>
+            <div>
+            <label>Recaptcha</label>
+              <input
+                type="checkbox"
+                placeholder="Recaptcha"
+                name="recaptcha"
+                value={formValues.recaptcha}
+                />
+            </div>
+            <div>
               <select
                 onChange={onInputChange}
                 name="estado"
@@ -97,6 +132,63 @@ export const AppAdd: React.FC<AppAddProps> = ({ onNewApp }) => {
                 <option value={"I"}>Inactivo</option>
               </select>
             </div>
+            <div className="politicas">
+              <h3>Politicas</h3>
+             <div>
+             <label>Reintentos</label>
+              <input
+                type="checkbox"
+                placeholder="Reintentos"
+                name="reintentos"
+                value={formValues.reintentos}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                onChange={onInputChange}
+              />
+             </div>
+             <div>
+             <label>Caducidad</label>
+              <input
+                type="checkbox"
+                placeholder="Caducidad"
+                name="caducidad"
+                value={formValues.caducidad}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                onChange={onInputChange}
+              />
+             </div>
+             <div>
+             <label>Longitud Maxima</label>
+              <input
+                type="checkbox"
+                placeholder="Logitud maxima"
+                name="logitudMaxima"
+                value={formValues.logitudMaxima}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                onChange={onInputChange}
+              />
+             </div>
+             <div>
+             <label>1er Cambio contra</label>
+              <input
+                type="checkbox"
+                placeholder="Cambio"
+                name="cambio"
+                value={formValues.cambio}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                onChange={onInputChange}
+              />
+             </div>
+             <div>
+             <label>Not. Cración</label>
+              <input
+                type="checkbox"
+                placeholder="creacion"
+                name="creacion"
+                value={formValues.creacion}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                onChange={onInputChange}
+              />
+             </div>
           </div>
           <button
             type="submit"
@@ -105,6 +197,7 @@ export const AppAdd: React.FC<AppAddProps> = ({ onNewApp }) => {
             Agregar
           </button>
           {error && <p className="text-red-500 mt-5">{error}</p>}
+          </div>
         </form>
       </div>
     </>
